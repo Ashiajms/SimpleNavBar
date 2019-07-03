@@ -1,0 +1,218 @@
+/* Sets how the total width and height of the elements are calculated */
+* {
+  box-sizing: border-box;
+}
+/* Removes the padding and margin from all of the elements within the HTML tag */
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+}
+/* Removes margin/padding from body tag elements, gives the body tag a width and
+height of 100%, and sets the background and font preferences */
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  font-family: Poppins;
+  font-weight: 400;
+  background: url("../img/bg-img.jpg");
+  background-position: center;
+  background-size: cover;
+}
+/* adds padding to the nav tag */
+nav {
+  padding: 8px;
+}
+/* Floats the logo to the left of the nav div and adds margins/padding to it */
+.logo {
+  float: left;
+  padding: 8px;
+  margin-left: 16px;
+  margin-top: 8px;
+}
+/* Adjusts the logo text size, color, spacing, and decorations */
+.logo a {
+  color: #000;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0px;
+  text-decoration: none;
+}
+/* floats the navbar links to the right of the div */
+nav ul{
+  float: right;
+}
+/* Displays nav links side by side instead of in default block level */
+nav ul li{
+  display: inline-block;
+  float: left;
+}
+/* Adds left margin to every nav link except for the first one */
+nav ul li:not(:first-child) {
+  margin-left: 48px;
+}
+/* Adds a right margin to the last nav link */
+nav ul li:last-child {
+  margin-right: 24px;
+}
+/* Adjusts the nav links text size, decoration, and display to inline-block */
+nav ul li a {
+  display: inline-block;
+  outline: none;
+  color: #000;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 1.2px;
+  font-weight: 600;
+}
+/* Hides the checkbox */
+.hidden {
+  display: none;
+}
+/* When the screen gets smaller than 864px, apply the following rules */
+@media screen and (max-width:864px) {
+  /* Remove the padding from the logo */
+  .logo {
+    padding: 0;
+  }
+/* Div container wrapped around the nav items; Takes up 100% of the screen
+ when the nav bar button is clicked */
+  .nav-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: #fff;
+    opacity: 0;
+    transition: all 0.2s;
+    border-style: double;
+  }
+/* The nav items are positioned halfway down the page  */
+  .nav-wrapper ul {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+  }
+/* Disaplays the nav links as block elements, aligns text to right of div,
+removes float */
+  .nav-wrapper ul li {
+    display: block;
+    float: none;
+    width: 100%;
+    text-align: right;
+    margin-bottom: 10px;
+  }
+        /*THIS IS HOW THE NAV LINKS GET THAT FADE IN EFFECT  */
+/* Adds a .2sec delay to the first link */
+  .nav-wrapper ul li:nth-child(1) a {
+    transition-delay: 0.2s;
+  }
+/* Adds a .3sec delay to the second link */
+  .nav-wrapper ul li:nth-child(2) a {
+    transition-delay: 0.3s;
+  }
+/* Adds a .4sec delay to the third link */
+  .nav-wrapper ul li:nth-child(3) a {
+    transition-delay: 0.4s;
+  }
+  /* Adds a .4sec delay to the fourth link */
+  .nav-wrapper ul li:nth-child(4) a {
+    transition-delay: 0.5s;
+  }
+/* Removes the left margin on all of the links excpet the first one */
+  .nav-wrapper ul li:not(:first-child) {
+    margin-left: 0;
+  }
+/* Adjusts the nav links text color, size, and padding */
+  .nav-wrapper ul li a {
+    padding: 10px 24px;
+    opacity: 0;
+    color: #000;
+    font-size: 14px;
+    font-weight: 600px;
+    letter-spacing: 1.2px;
+    transform: translateX(-20px);
+    transition: all 0.2s ease;
+  }
+/* Fixes the navbar button "icon" to the top right corner of the navbar */
+  .nav-btn {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    display: block;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    z-index: 9999;
+    border-radius: 50%;
+  }
+/* Displays each 'bar' as a block element and adjusts its width,
+ height, and color */
+  .nav-btn i {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: #000;
+    border-radius: 2px;
+    margin-left: 14px;
+  }
+/* Adds a top margin to the first <i> tag */
+  .nav-btn i:nth-child(1){
+    margin-top: 16px;
+  }
+/* Adds a top margin and opacity to the second <i> tag */
+  .nav-btn i:nth-child(2) {
+    margin-top: 4px;
+    opacity: 1;
+  }
+/* Adds a top margin to the third <i> tag */
+  .nav-btn i:nth-child(3) {
+    margin-top: 4px;
+  }
+/* When the checkbox is clicked, the nav-btn rotates 45degrees to the left */
+#nav:checked + .nav-btn {
+  transform: rotate(45deg);
+}
+/* When the checkbox is clicked, the nav-btn 'bars' omve with a speed of .2 sec */
+#nav:checked + .nav-btn i {
+  background:  #000;
+  transition: transform 0.2s ease;
+}
+/* When the checkbox is clicked, the first 'bar' moves 6px up from its current
+position and rotates 180deg to the left  */
+#nav:checked + .nav-btn i:nth-child(1) {
+  transform: translateY(6px) rotate(180deg);
+}
+  /* When the checkbox is clicked, the second 'bar' 'disapears'  */
+#nav:checked +.nav-btn i:nth-child(2) {
+  opacity: 0;
+}
+/* When the checkbox is clicked, the third 'bar' moves 6px down the y axis
+from its current position and rotates 180deg to the left  */
+#nav:checked + .nav-btn i:nth-child(3) {
+  transform: translateY(-6px) rotate(90deg);
+}
+/* When the nav checkbox is checked, the nav-wrapper becomes a higher order than
+the background and therefore covers the screen*/
+#nav:checked ~ .nav-wrapper {
+  z-index: 9990;
+  opacity: 1;
+}
+/* When the checkbox is checked, the  */
+#nav:checked ~ .nav-wrapper ul li a {
+  opacity: 1;
+  transform: translateX(0);
+}
+/* Hides the checkbox */
+.hidden {
+  display: none;
+}
+}
